@@ -1,13 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const cookieSession = require("cookie-session");
-const passport = require("passport");
 const keys = require("./config/keys");
-const variables = require("./config/variables");
 
 // Create user model before initializing passport
 require("./models/user");
 require("./services/passport");
+
+const cookieSession = require("cookie-session");
+const passport = require("passport");
+const variables = require("./config/variables");
 
 mongoose.connect(keys.mongoURI);
 
