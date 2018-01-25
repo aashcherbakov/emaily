@@ -19,7 +19,7 @@ module.exports = app => {
     res.redirect("/");
   });
 
-  // Passport adds User object to req object.
+  // Passport adds User object to req object. You can perform database operations on it.
   app.get("/api/current_user", (req, res) => {
     res.send(req.user);
   });

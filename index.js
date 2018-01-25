@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const keys = require("./config/keys");
 
@@ -13,6 +14,9 @@ const variables = require("./config/variables");
 mongoose.connect(keys.mongoURI);
 
 const app = express();
+
+// Parse body to req.body
+app.use(bodyParser.json());
 
 /**
  * Settin up cookie session management.
@@ -43,6 +47,7 @@ Second handles callback URL that is set in Google Developer console.
 
 // Calls a function of authRouts with app object.
 require("./routes/authRoutes")(app);
+require("./routes/billingRoutes")(app);
 
 const PORT = process.env.PORT || 5000;
 
