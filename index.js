@@ -5,6 +5,8 @@ const keys = require("./config/keys");
 
 // Create user model before initializing passport
 require("./models/user");
+require("./models/survey");
+require("./models/survey");
 require("./services/passport");
 
 const cookieSession = require("cookie-session");
@@ -48,6 +50,7 @@ Second handles callback URL that is set in Google Developer console.
 // Calls a function of authRouts with app object.
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 // Configuring production React app
 if (process.env.NODE_ENV === "production") {
