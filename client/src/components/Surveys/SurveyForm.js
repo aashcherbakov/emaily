@@ -4,18 +4,12 @@ import { Link } from "react-router-dom";
 import SurveyField from "./SurveyField";
 import _ from "lodash";
 import validateEmails from "../../utils/validateEmails";
-
-const FIELDS = [
-  { name: "title", label: "Survey Title" },
-  { name: "subject", label: "Subject Line" },
-  { name: "body", label: "Email Body" },
-  { name: "emails", label: "Recipients list" }
-];
+import formFields from "./formFields";
 
 // Shows the actual form to collect user input.
 class SurveyForm extends Component {
   renderFields() {
-    return _.map(FIELDS, ({ label, name }) => {
+    return _.map(formFields, ({ label, name }) => {
       return (
         <Field
           key={name}
@@ -48,9 +42,9 @@ class SurveyForm extends Component {
 
 function validate(values) {
   const errors = {};
-  errors.emails = validateEmails(values.emails);
+  errors.recipients = validateEmails(values.recipients || "");
 
-  _.each(FIELDS, ({ name }) => {
+  _.each(formFields, ({ name }) => {
     if (!values[name]) {
       errors[name] = "This field is required";
     }
