@@ -13,6 +13,7 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const variables = require("./config/variables");
 
+mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI);
 
 const app = express();
